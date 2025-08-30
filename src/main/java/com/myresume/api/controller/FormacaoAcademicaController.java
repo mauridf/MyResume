@@ -2,6 +2,7 @@ package com.myresume.api.controller;
 
 import com.myresume.application.service.FormacaoAcademicaService;
 import com.myresume.domain.model.FormacaoAcademica;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class FormacaoAcademicaController {
     @PostMapping("/{pessoaId}")
     public ResponseEntity<FormacaoAcademica> criar(
             @PathVariable UUID pessoaId,
-            @RequestBody FormacaoAcademica formacao) {
+            @Valid @RequestBody FormacaoAcademica formacao) {
         return ResponseEntity.ok(service.criar(pessoaId, formacao));
     }
 

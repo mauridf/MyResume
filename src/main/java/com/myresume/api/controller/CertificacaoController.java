@@ -2,6 +2,7 @@ package com.myresume.api.controller;
 
 import com.myresume.application.service.CertificacaoService;
 import com.myresume.domain.model.Certificacao;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class CertificacaoController {
     @PostMapping("/{pessoaId}")
     public ResponseEntity<Certificacao> criar(
             @PathVariable UUID pessoaId,
-            @RequestBody Certificacao certificacao) {
+            @Valid @RequestBody Certificacao certificacao) {
         return ResponseEntity.ok(service.criar(pessoaId, certificacao));
     }
 

@@ -1,6 +1,7 @@
 package com.myresume.domain.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.util.UUID;
@@ -18,7 +19,9 @@ public class Idioma {
     @GeneratedValue
     private UUID id;
 
+    @NotBlank(message = "Idioma é obrigatório")
     private String idioma;
+    @NotBlank(message = "Nível é obrigatório")
     private String nivel; // Básico, Intermediário, Avançado, Fluente
 
     @ManyToOne

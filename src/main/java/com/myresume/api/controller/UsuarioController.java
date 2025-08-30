@@ -2,6 +2,7 @@ package com.myresume.api.controller;
 
 import com.myresume.application.service.UsuarioService;
 import com.myresume.domain.model.Usuario;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class UsuarioController {
 
     // Cadastro de usuário
     @PostMapping("/cadastrar")
-    public ResponseEntity<?> cadastrar(@RequestBody Map<String, String> body) {
+    public ResponseEntity<?> cadastrar(@Valid @RequestBody Map<String, String> body) {
         String email = body.get("email");
         String senha = body.get("senha");
 

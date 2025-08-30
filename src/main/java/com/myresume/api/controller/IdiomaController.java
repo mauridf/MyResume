@@ -2,6 +2,7 @@ package com.myresume.api.controller;
 
 import com.myresume.application.service.IdiomaService;
 import com.myresume.domain.model.Idioma;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class IdiomaController {
     @PostMapping("/{pessoaId}")
     public ResponseEntity<Idioma> criar(
             @PathVariable UUID pessoaId,
-            @RequestBody Idioma idioma) {
+            @Valid @RequestBody Idioma idioma) {
         return ResponseEntity.ok(service.criar(pessoaId, idioma));
     }
 

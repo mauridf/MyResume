@@ -2,6 +2,7 @@ package com.myresume.api.controller;
 
 import com.myresume.application.service.PessoaService;
 import com.myresume.domain.model.Pessoa;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class PessoaController {
 
     // Criar Pessoa vinculada ao usuário logado
     @PostMapping
-    public ResponseEntity<Pessoa> criar(@RequestBody Pessoa pessoa, Authentication authentication) {
+    public ResponseEntity<Pessoa> criar(@Valid @RequestBody Pessoa pessoa, Authentication authentication) {
         UUID usuarioId = (UUID) authentication.getPrincipal();
         Pessoa novaPessoa = pessoaService.criar(usuarioId, pessoa);
         return ResponseEntity.ok(novaPessoa);

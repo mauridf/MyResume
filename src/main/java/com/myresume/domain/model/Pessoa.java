@@ -1,6 +1,9 @@
 package com.myresume.domain.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -20,10 +23,13 @@ public class Pessoa {
     private UUID id;
 
     @Column(nullable = false)
+    @NotBlank(message = "O nome não pode ser vazio")
+    @Size(min = 3, max = 100, message = "O nome deve ter entre 3 e 100 caracteres")
     private String nome;
 
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
+    @Pattern(regexp = "\\d{11}", message = "Telefone deve ter 11 dígitos (DDD + número)")
     private String telefone;
     private String cidade;
     private String uf;
